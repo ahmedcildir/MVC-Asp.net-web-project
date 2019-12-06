@@ -11,6 +11,7 @@ namespace MVC_ilk_procem.Controllers
     
     public class KatogoriController : Controller
     {
+
         // GET: Katogori
         STOKTAKIPEntities db = new STOKTAKIPEntities();
         public ActionResult Index(int sayfa=1)
