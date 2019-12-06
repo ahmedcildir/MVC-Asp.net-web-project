@@ -1,0 +1,29 @@
+﻿@model MVC_ilk_procem.Models.Entity.TBLURUNLER
+@{
+    ViewBag.Title = "UrunGetir";
+    Layout = "~/Views/Shared/MasterLeyaut.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Urun", FormMethod.Post))
+{
+<div class="form-group">
+    <label>ID</label>
+    @Html.TextBoxFor(x => x.URUN_ID, new { @class = "form-control" })
+    <label>Ürün Aydı</label>
+    @Html.TextBoxFor(x => x.URUN_AD, new { @class = "form-control" })
+    <label>Marka</label>
+    @Html.TextBoxFor(x => x.MARKA, new { @class = "form-control" })
+    <label>Kategori</label>
+    @*@Html.TextBoxFor(x => x.URUNKATEGORI, new { @class = "form-control" })*@
+   @Html.DropDownListFor(x => x.TBLKATEGORILER.KATEGORI_ID, (List<SelectListItem>)ViewBag.deger, new {@class="form-control" })
+    <label>Fiyat</label>
+    @Html.TextBoxFor(x => x.FIYAT, new { @class = "form-control" })
+    <label>Stok</label>
+    @Html.TextBoxFor(x => x.STOK, new { @class = "form-control" })
+    
+</div>
+    <div>
+        <button class="btn btn-warning">Ürün Güncelle</button>
+    </div>
+}
+

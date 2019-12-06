@@ -45,10 +45,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -127,8 +141,41 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KatogoriController.cs" />
+    <Compile Include="Controllers\MusteriController.cs" />
+    <Compile Include="Controllers\UrunController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\stokContexDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>stokContexDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\stokContexDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>stokContexDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\stokContexDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>stokContexDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\sysdiagram.cs">
+      <DependentUpon>stokContexDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\TBLKATEGORILER.cs">
+      <DependentUpon>stokContexDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\TBLMUSTERILER.cs">
+      <DependentUpon>stokContexDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\TBLSATISLAR.cs">
+      <DependentUpon>stokContexDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\TBLURUNLER.cs">
+      <DependentUpon>stokContexDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -137,12 +184,30 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Entity\stokContexDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>stokContexDB.Context.cs</LastGenOutput>
+      <DependentUpon>stokContexDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Entity\stokContexDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>stokContexDB.edmx</DependentUpon>
+      <LastGenOutput>stokContexDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Entity\stokContexDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>stokContexDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Entity\stokContexDB.edmx.diagram">
+      <DependentUpon>stokContexDB.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -168,10 +233,19 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\MasterLeyaut.cshtml" />
+    <Content Include="Views\Katogori\Index.cshtml" />
+    <Content Include="Views\Urun\Index.cshtml" />
+    <Content Include="Views\Musteri\Index.cshtml" />
+    <Content Include="Views\Katogori\Yenikategori.cshtml" />
+    <Content Include="Views\Urun\Yeniurun.cshtml" />
+    <Content Include="Views\Musteri\Yenimusteri.cshtml" />
+    <Content Include="Views\Katogori\Guncelle.cshtml" />
+    <Content Include="Views\Musteri\MusteriGetir.cshtml" />
+    <Content Include="Views\Urun\UrunGetir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -185,6 +259,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

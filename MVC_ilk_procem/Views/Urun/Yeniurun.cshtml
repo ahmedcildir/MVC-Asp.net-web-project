@@ -1,0 +1,34 @@
+﻿@model MVC_ilk_procem.Models.Entity.TBLURUNLER
+@{
+    ViewBag.Title = "Yeniurun";
+    Layout = "~/Views/Shared/MasterLeyaut.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div>
+        <label>Ürün Ad</label>
+        <input type="text" class="form-control" name="URUN_AD" required="" maxlength="10" />
+    </div>
+    <div>
+        <label>Marka</label>
+        <input type="text" class="form-control" name="MARKA" />
+    </div>
+    <div>
+        <label>KATEGORİ</label>
+        @* DropDownList işlemi *@
+        @Html.DropDownListFor(x => x.TBLKATEGORILER.KATEGORI_ID, (List<SelectListItem>)ViewBag.deger, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>FİYAT</label>
+        <input type="text" class="form-control" name="FIYAT" />
+    </div>
+    <div>
+        <label>STOK</label>
+        <input type="text" class="form-control" name="STOK" />
+    </div>
+
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Urün Ekle</button>
+    </div>
+</form>
+

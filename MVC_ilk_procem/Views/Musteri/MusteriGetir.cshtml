@@ -1,0 +1,23 @@
+﻿@model MVC_ilk_procem.Models.Entity.TBLMUSTERILER
+@{
+    ViewBag.Title = "MusteriGetir";
+    Layout = "~/Views/Shared/MasterLeyaut.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Musteri", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(x => x.MUSTERI_ID)
+    @Html.TextBoxFor(x => x.MUSTERI_ID, new { @class = "form-control" })
+    <br />
+    Müşteri Ad
+    @Html.TextBoxFor(x => x.MUSTERI_AD, new { @class = "form-control" })
+    <br />
+    Müşteri Soyad
+    @Html.TextBoxFor(x => x.MUSTERI_SOYAD, new { @class = "form-control" })
+</div>
+    <div>
+        <button class="btn btn-warning"> Müşteri Güncelle</button>
+    </div>
+}
+

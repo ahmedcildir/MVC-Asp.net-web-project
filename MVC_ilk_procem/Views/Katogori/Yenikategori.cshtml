@@ -1,0 +1,18 @@
+﻿@model MVC_ilk_procem.Models.Entity.TBLKATEGORILER
+@{
+    ViewBag.Title = "Yenikategori";
+    Layout = "~/Views/Shared/MasterLeyaut.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div>
+        <label>Kategori Aı</label>
+        <input type="text" class="form-control" name="KATEGORI_AD" />
+        @* Hata Mesacı Gösterme *@
+        @Html.ValidationMessageFor(x=>x.KATEGORI_AD,"",new { @Style="Color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Kategori Ekle</button>
+    </div>
+</form>
+

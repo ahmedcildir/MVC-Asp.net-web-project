@@ -1,0 +1,22 @@
+﻿@model MVC_ilk_procem.Models.Entity.TBLKATEGORILER
+@{
+    ViewBag.Title = "Guncelle";
+    Layout = "~/Views/Shared/MasterLeyaut.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle1", "Katogori", FormMethod.Post))
+{
+
+<div class="form-group">
+    @Html.Label("ID")
+    @Html.TextBoxFor(x => x.KATEGORI_ID, new { @class = "form-control" })
+    <br />
+    @Html.Label("Kategori Ad")
+    @Html.TextBoxFor(x => x.KATEGORI_AD, new { @class = "form-control" })
+    <br />
+    <div>
+        <button class="btn btn-warning">Kategoriyi Güncelle</button>
+    </div>
+</div>
+}
+

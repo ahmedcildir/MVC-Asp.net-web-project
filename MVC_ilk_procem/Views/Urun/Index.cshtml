@@ -1,0 +1,38 @@
+﻿@using MVC_ilk_procem.Models.Entity;
+@model List<TBLURUNLER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterLeyaut.cshtml";
+}
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ÜRÜN ID</th>
+            <th>ÜRÜN AD</th>
+            <th>MARKA</th>
+            <th>KATEGORİ</th>
+            <th>FİYAT</th>
+            <th>STOK</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+        <tr>
+            <th>@i.URUN_ID</th>
+            <td>@i.URUN_AD</td>
+            <td>@i.MARKA</td>
+            <td>@i.TBLKATEGORILER.KATEGORI_AD</td>
+            <td>@i.FIYAT</td>
+            <td>@i.STOK</td>
+            <td><a href="/Urun/Sil/@i.URUN_ID" class="btn btn-danger">SİL</a></td>
+            <td><a href="/Urun/UrunGetir/@i.URUN_ID" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+<td><a href="/Urun/Yeniurun" class="btn btn-primary">YENİ ÜRÜN EKLE</a></td>

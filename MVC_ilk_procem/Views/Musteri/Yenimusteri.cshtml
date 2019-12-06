@@ -1,0 +1,21 @@
+﻿@model MVC_ilk_procem.Models.Entity.TBLMUSTERILER
+@{
+    ViewBag.Title = "Yenimusteri";
+    Layout = "~/Views/Shared/MasterLeyaut.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div>
+        <label>Ad</label>
+        <input type="text" class="form-control" name="MUSTERI_AD" />
+        @Html.ValidationMessageFor(x=>x.MUSTERI_AD,"",new {@style="color:red" })
+    </div>
+    <div>
+        <label>Soyad</label>
+        <input type="text" class="form-control" name="MUSTERI_SOYAD" />
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Urün Ekle</button>
+    </div>
+</form>
+
